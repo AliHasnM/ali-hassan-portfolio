@@ -1,93 +1,94 @@
 "use client";
 
-import {
-    FaHtml5,
-    FaCss3Alt,
-    FaJs,
-    FaReact,
-    FaNodeJs,
-    FaGithub,
-    FaGitAlt,
-} from "react-icons/fa";
-import {
-    SiTailwindcss,
-    SiExpress,
-    SiMongodb,
-    SiMongoose,
-    SiVercel,
-    SiSocketdotio,
-    SiNextdotjs,
-    SiRedux,
-    SiPostman,
-    SiNetlify,
-    SiRailway,
-    SiFramer,
-    SiJsonwebtokens,
-    SiFigma,
-    SiTypescript,
-} from "react-icons/si";
-import { RiToolsFill } from "react-icons/ri";
-import { VscVscode } from 'react-icons/vsc';
+// import {
+//     FaHtml5,
+//     FaCss3Alt,
+//     FaJs,
+//     FaReact,
+//     FaNodeJs,
+//     FaGithub,
+//     FaGitAlt,
+// } from "react-icons/fa";
+// import {
+//     SiTailwindcss,
+//     SiExpress,
+//     SiMongodb,
+//     SiMongoose,
+//     SiVercel,
+//     SiSocketdotio,
+//     SiNextdotjs,
+//     SiRedux,
+//     SiPostman,
+//     SiNetlify,
+//     SiRailway,
+//     SiFramer,
+//     SiJsonwebtokens,
+//     SiFigma,
+//     SiTypescript,
+// } from "react-icons/si";
+// import { RiToolsFill } from "react-icons/ri";
+// import { VscVscode } from 'react-icons/vsc';
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { techStack } from "../data/techStackData";
 
-const categories = [
-    {
-        title: "Web Basics",
-        items: [
-            { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-            { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
-            { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
-            { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-        ],
-    },
-    {
-        title: "Frontend",
-        items: [
-            { name: "React.js", icon: <FaReact className="text-cyan-400" /> },
-            { name: "Next.js", icon: <SiNextdotjs className="text-black dark:text-white" /> },
-            { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" /> },
-            { name: "Redux", icon: <SiRedux className="text-purple-500" /> },
-            { name: "Framer Motion", icon: <SiFramer className="text-pink-500" /> },
-        ],
-    },
-    {
-        title: "Backend",
-        items: [
-            { name: "Node.js", icon: <FaNodeJs className="text-green-600" /> },
-            { name: "Express.js", icon: <SiExpress className="text-gray-700 dark:text-white" /> },
-            { name: "JWT", icon: <SiJsonwebtokens className="text-red-500" /> },
-        ],
-    },
-    {
-        title: "Database",
-        items: [
-            { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
-            { name: "Mongoose", icon: <SiMongoose className="text-red-500" /> }
-        ],
-    },
-    {
-        title: "DevOps & Deployment",
-        items: [
-            { name: "Vercel", icon: <SiVercel className="text-black dark:text-white" /> },
-            { name: "Netlify", icon: <SiNetlify className="text-green-500" /> },
-            { name: "Railway", icon: <SiRailway className="text-purple-600" /> },
-            { name: "GitHub Actions", icon: <FaGithub className="text-gray-800 dark:text-white" /> },
-        ],
-    },
-    {
-        title: "Others",
-        items: [
-            { name: "REST API", icon: <RiToolsFill className="text-blue-600" /> },
-            { name: "WebSocket", icon: <SiSocketdotio className="text-purple-600" /> },
-            { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
-            { name: "Git", icon: <FaGitAlt className="text-red-600" /> },
-            { name: "VS Code", icon: <VscVscode className="text-blue-500" /> },
-            { name: "Figma", icon: <SiFigma className="text-pink-500" /> },
-        ],
-    },
-];
+// const categories = [
+//     {
+//         title: "Web Basics",
+//         items: [
+//             { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
+//             { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+//             { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+//             { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
+//         ],
+//     },
+//     {
+//         title: "Frontend",
+//         items: [
+//             { name: "React.js", icon: <FaReact className="text-cyan-400" /> },
+//             { name: "Next.js", icon: <SiNextdotjs className="text-black dark:text-white" /> },
+//             { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" /> },
+//             { name: "Redux", icon: <SiRedux className="text-purple-500" /> },
+//             { name: "Framer Motion", icon: <SiFramer className="text-pink-500" /> },
+//         ],
+//     },
+//     {
+//         title: "Backend",
+//         items: [
+//             { name: "Node.js", icon: <FaNodeJs className="text-green-600" /> },
+//             { name: "Express.js", icon: <SiExpress className="text-gray-700 dark:text-white" /> },
+//             { name: "JWT", icon: <SiJsonwebtokens className="text-red-500" /> },
+//         ],
+//     },
+//     {
+//         title: "Database",
+//         items: [
+//             { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
+//             { name: "Mongoose", icon: <SiMongoose className="text-red-500" /> }
+//         ],
+//     },
+//     {
+//         title: "DevOps & Deployment",
+//         items: [
+//             { name: "Vercel", icon: <SiVercel className="text-black dark:text-white" /> },
+//             { name: "Netlify", icon: <SiNetlify className="text-green-500" /> },
+//             { name: "Railway", icon: <SiRailway className="text-purple-600" /> },
+//             { name: "GitHub Actions", icon: <FaGithub className="text-gray-800 dark:text-white" /> },
+//         ],
+//     },
+//     {
+//         title: "Others",
+//         items: [
+//             { name: "REST API", icon: <RiToolsFill className="text-blue-600" /> },
+//             { name: "WebSocket", icon: <SiSocketdotio className="text-purple-600" /> },
+//             { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
+//             { name: "Git", icon: <FaGitAlt className="text-red-600" /> },
+//             { name: "VS Code", icon: <VscVscode className="text-blue-500" /> },
+//             { name: "Figma", icon: <SiFigma className="text-pink-500" /> },
+//         ],
+//     },
+// ];
 
 export default function TechStack() {
     useEffect(() => {
@@ -105,7 +106,7 @@ export default function TechStack() {
                 </h2>
 
                 <div className="mx-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {categories.map((category, i) => (
+                    {techStack.map((category, i) => (
                         <div
                             key={category.title}
                             data-aos="fade-up"
@@ -114,12 +115,18 @@ export default function TechStack() {
                         >
                             <h3 className="text-xl font-bold text-cyan-500 mb-4">{category.title}</h3>
                             <ul className="space-y-3">
-                                {category.items.map(({ name, icon }) => (
-                                    <li key={name} className="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
-                                        <span className="text-2xl">{icon}</span>
-                                        <span className="font-medium">{name}</span>
-                                    </li>
-                                ))}
+                                {category.items.map(({ name, icon, className }) => {
+                                    const Icon = icon;
+                                    return (
+                                        <li key={name} className="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+                                            <span className={`text-2xl ${className}`}>
+                                                <Icon />
+                                            </span>
+                                            <span className="font-medium">{name}</span>
+                                        </li>
+                                    );
+                                })}
+
                             </ul>
                         </div>
                     ))}

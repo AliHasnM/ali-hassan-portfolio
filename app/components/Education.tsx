@@ -3,101 +3,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GraduationCap } from 'lucide-react';
-import Image from 'next/image';
 import { Dialog } from '@headlessui/react';
-
-const degrees = [
-    {
-        degree: 'BS Computer Science',
-        university: 'University of Agriculture Faisalabad Sub-Campus Burewala',
-        years: '2020 – 2024',
-        cgpa: 'CGPA: 3.58',
-        image: '/images/8th Semester.jpg',
-    },
-    {
-        degree: 'Intermediate in Pre-Engineering',
-        university: 'Punjab Group of Colleges',
-        years: '2018 – 2020',
-        image: '/images/8th Semester.jpg',
-    },
-    {
-        degree: 'Matriculation in Science',
-        university: 'The Trust School',
-        years: '2016 – 2018',
-        image: '/images/8th Semester.jpg',
-    },
-];
-
-const certifications = [
-    {
-        title: 'Meta Front-End Developer Professional Certificate',
-        platform: 'Coursera / Meta',
-        year: '2024',
-        image: '/images/meta-cert.png',
-    },
-    {
-        title: 'AWS Cloud Practitioner Essentials',
-        platform: 'Amazon Web Services',
-        year: '2024',
-        image: '/images/aws-cert.png',
-    },
-    {
-        title: 'Responsive Web Design',
-        platform: 'FreeCodeCamp',
-        year: '2023',
-        image: '/images/fcc-cert.png',
-    },
-    {
-        title: 'MERN Stack Development',
-        platform: 'Devsinz Intern Connect',
-        year: '2023',
-    },
-    {
-        title: 'Web Development and Designing',
-        platform: 'CodeAlpha',
-        year: '2023',
-    },
-    {
-        title: 'Web Development and Designing',
-        platform: 'The Sparks Foundation',
-        year: '2023',
-    },
-];
-
-const diplomas = [
-    { title: 'Website Development Using HTML and CSS', platform: 'Alison' },
-    { title: 'Starting JavaScript Programming', platform: 'Alison' },
-    { title: 'JavaScript ES6 Complete Guide', platform: 'Alison' },
-    { title: 'React JavaScript - Fundamentals to Coding', platform: 'Alison' },
-    { title: 'MERN Stack Development', platform: 'Alison' },
-];
-
-const internships = [
-    {
-        company: 'Devsinz Intern Connect',
-        role: 'MERN Stack Developer Intern',
-        duration: '1 Month',
-        year: '2023',
-    },
-    {
-        company: 'CodeAlpha',
-        role: 'Web Development & Design Intern',
-        duration: '1 Month',
-        year: '2023',
-    },
-    {
-        company: 'The Sparks Foundation',
-        role: 'Web Development & Design Intern',
-        duration: '1 Month',
-        year: '2023',
-    },
-    {
-        company: 'Innovixion Tech',
-        role: 'MERN Stack Developer Intern',
-        duration: '3 Months',
-        year: '2023',
-    },
-];
+import { degrees, certifications, diplomas, internships } from '../data/educationData';
+import Image from 'next/image';
 
 export default function EducationPage() {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -139,9 +47,9 @@ export default function EducationPage() {
                                 <p className="text-sm text-gray-500 dark:text-gray-400">{edu.university}</p>
                                 <p className="text-sm text-gray-400">{edu.years}</p>
                                 {edu.cgpa && <p className="text-sm text-gray-400">{edu.cgpa}</p>}
-                                {edu.image && (
+                                {edu.pdf && (
                                     <button
-                                        onClick={() => setSelectedImage(edu.image)}
+                                        onClick={() => setSelectedImage(edu.pdf)}
                                         className="mt-2 cursor-pointer text-blue-600 hover:underline hover:text-blue-800 dark:hover:text-blue-400 transition duration-200 text-sm font-medium"
                                     >
                                         📄 See Degree Certificate
@@ -209,6 +117,8 @@ export default function EducationPage() {
              hover:border-transparent hover:bg-gradient-to-br hover:from-cyan-400/20 hover:to-blue-500/10 hover:ring-1 hover:ring-cyan-400/40"
                             >
                                 <p className="font-medium">{dip.title}</p>
+                                <p className="text-sm text-gray-400">Issued: {dip.issuedDate}</p>
+                                <p className="text-sm text-gray-400">Credential ID: {dip.credentialId}</p>
                                 <p className="text-sm text-gray-500">{dip.platform}</p>
                             </motion.li>
                         ))}
@@ -232,12 +142,13 @@ export default function EducationPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: i * 0.1 }}
                                 viewport={{ once: false, amount: 0.3 }}
-                                className="cursor-pointer bg-white border border-cyan-500/20 shadow-sm dark:shadow-md p-6 rounded-2xl transition duration-300 hover:shadow-lg hover:border-cyan-400 hover:bg-gradient-to-br hover:from-cyan-500/10 hover:via-blue-500/10 hover:to-indigo-500/10 dark:bg-gray-900/80 backdrop-blur-sm hover:ring-1 hover:ring-cyan-400/50">
+                                className="cursor-pointer bg-white border border-cyan-500/20 shadow-sm dark:shadow-md mt-2 p-6 rounded-2xl transition duration-300 hover:shadow-lg hover:border-cyan-400 hover:bg-gradient-to-br hover:from-cyan-500/10 hover:via-blue-500/10 hover:to-indigo-500/10 dark:bg-gray-900/80 backdrop-blur-sm hover:ring-1 hover:ring-cyan-400/50">
                                 <div className="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 top-2.5"></div>
-                                <div className="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                                    <p className="font-medium">{job.role}</p>
-                                    <p className="text-sm text-gray-500">{job.company}</p>
-                                    <p className="text-sm text-gray-400">{job.duration} — {job.year}</p>
+                                <div className="bg-white dark:bg-gray-900 px-1 py-2 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                                    <p className="font-medium px-2">{job.role}</p>
+                                    <p className="text-sm text-gray-500 px-2">{job.company}</p>
+                                    <p className="text-sm text-gray-500 px-2">{job.type}</p>
+                                    <p className="text-sm text-gray-400 px-2">{job.duration} — {job.year}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -263,13 +174,22 @@ export default function EducationPage() {
                                 transition={{ duration: 0.3 }}
                                 className="bg-white dark:bg-gray-900 p-4 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-auto"
                             >
-                                <Image
-                                    src={selectedImage}
-                                    alt="Preview"
-                                    width={1200}
-                                    height={900}
-                                    className="w-full h-auto rounded-lg object-contain cursor-pointer"
-                                />
+                                {selectedImage.toLowerCase().endsWith(".pdf") ? (
+                                    <iframe
+                                        src={selectedImage}
+                                        title="PDF Preview"
+                                        className="w-full h-[80vh] rounded-lg"
+                                    />
+                                ) : (
+                                    <Image
+                                        src={selectedImage}
+                                        width={1080}
+                                        height={720}
+                                        alt="Certificate Preview"
+                                        className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+                                    />
+                                )}
+
                                 <div className="text-right mt-4">
                                     <button
                                         onClick={() => setSelectedImage(null)}
