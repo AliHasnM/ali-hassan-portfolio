@@ -124,19 +124,23 @@ export const techStack: TechCategory[] = [
     ],
   },
   {
-    title: "Others",
+    title: "Testing & API Tools",
     items: [
-      { name: "REST API", icon: RiToolsFill, className: "text-blue-600" },
-      { name: "WebSocket", icon: SiSocketdotio, className: "text-purple-600" },
       { name: "Postman", icon: SiPostman, className: "text-orange-500" },
-      { name: "Git", icon: FaGitAlt, className: "text-red-600" },
-      { name: "VS Code", icon: VscVscode, className: "text-blue-500" },
-      { name: "Figma", icon: SiFigma, className: "text-pink-500" },
-      { name: "ESLint + Prettier", icon: FaCode, className: "text-indigo-600" },
       {
-        name: "Zod (Validation)",
-        icon: FaShieldAlt,
-        className: "text-green-600",
+        name: "Thunder Client",
+        icon: SiPostman, // No direct icon, reusing Postman’s for now
+        className: "text-pink-500",
+      },
+      {
+        name: "Jest (Unit Testing)",
+        icon: FaTerminal,
+        className: "text-red-600",
+      },
+      {
+        name: "React Testing Library",
+        icon: FaMagic,
+        className: "text-purple-600",
       },
     ],
   },
@@ -174,6 +178,23 @@ export const techStack: TechCategory[] = [
         name: "API Orchestration",
         icon: SiApollographql,
         className: "text-pink-600",
+      },
+    ],
+  },
+  {
+    title: "Others",
+    items: [
+      { name: "REST API", icon: RiToolsFill, className: "text-blue-600" },
+      { name: "WebSocket", icon: SiSocketdotio, className: "text-purple-600" },
+      { name: "Postman", icon: SiPostman, className: "text-orange-500" },
+      { name: "Git", icon: FaGitAlt, className: "text-red-600" },
+      { name: "VS Code", icon: VscVscode, className: "text-blue-500" },
+      { name: "Figma", icon: SiFigma, className: "text-pink-500" },
+      { name: "ESLint + Prettier", icon: FaCode, className: "text-indigo-600" },
+      {
+        name: "Zod (Validation)",
+        icon: FaShieldAlt,
+        className: "text-green-600",
       },
     ],
   },

@@ -1,12 +1,15 @@
 /* app/components/HeroSection.tsx */
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "../lib/utils";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { easeInOut, motion, Variants } from "framer-motion";
+import useScrollDirection from "../hooks/useScrollDirection";
+
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 import {
   Code,
   Clock,
@@ -65,14 +68,43 @@ const IconLink = ({
 );
 
 const HeroSection = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-      offset: 120, // default is 120px before it triggers
-      easing: 'ease-in-out',
-    });
-  }, []);
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 1000,
+  //     once: false,
+  //     offset: 120, // default is 120px before it triggers
+  //     easing: 'ease-in-out',
+  //   });
+  // }, []);
+  const scrollDirection = useScrollDirection();
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.6,
+        duration: 0.8,
+        ease: easeInOut,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: scrollDirection === "down" ? 50 : -50,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.42, 0, 0.58, 1],
+      },
+    },
+  };
 
   return (
     <section className="relative w-full overflow-hidden py-16 sm:py-20 md:py-24">
@@ -81,80 +113,87 @@ const HeroSection = () => {
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col-reverse items-center
                       gap-12 px-4 sm:px-6 md:flex-row md:gap-20">
         {/* ─── Left column ─── */}
-        <div className="mt-10 px-2 w-full text-left md:mt-0 md:w-7/12">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="mt-10 px-2 w-full text-left md:mt-0 md:w-7/12"
+        >
           {/* Headings */}
-          <div className="text-center md:text-left" data-aos="fade-up">
-            <h1 className="text-3xl mt-6 xs:text-4xl sm:text-5xl font-extrabold tracking-tight lg:text-6xl">
-              <span className="bg-gradient-to-r from-teal-300 via-cyan-400 to-blue-500
-                             bg-clip-text text-transparent">
+          <motion.div className="text-center md:text-left">
+            <motion.h1
+              variants={itemVariants}
+              className="text-3xl mt-6 xs:text-4xl sm:text-5xl font-extrabold tracking-tight lg:text-6xl"
+            >
+              <span className="bg-gradient-to-r from-teal-300 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 Ali&nbsp;Hassan
               </span>
-            </h1>
-            <h2 className="mt-2 text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl
-               font-bold bg-gradient-to-r from-teal-300 via-cyan-400 to-blue-500
-               bg-clip-text text-transparent break-words">
+            </motion.h1>
+
+            <motion.h2
+              variants={itemVariants}
+              className="mt-2 text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-teal-300 via-cyan-400 to-blue-500 bg-clip-text text-transparent break-words"
+            >
               Full&nbsp;Stack&nbsp;Developer&nbsp;(MERN&nbsp;/&nbsp;Next.js)
-            </h2>
-          </div>
+            </motion.h2>
+          </motion.div>
+
           {/* Intro */}
-          <p className="mt-4 text-base leading-relaxed text-neutral-300 sm:text-lg md:text-xl" data-aos="fade-up">
+          <motion.p
+            variants={itemVariants}
+            className="mt-4 text-base leading-relaxed text-neutral-300 sm:text-lg md:text-xl"
+          >
             I specialize in the&nbsp;
             <span className="text-cyan-300 font-semibold">MERN stack</span> and&nbsp;
-            <span className="text-cyan-300 font-semibold">Next.js</span>, crafting
-            responsive UIs and robust back‑end systems with precision. I build
-            clean, scalable, high‑performance solutions that work flawlessly and
-            look great doing it.
+            <span className="text-cyan-300 font-semibold">Next.js</span>, crafting responsive UIs and robust back‑end systems with precision. I build clean, scalable, high‑performance solutions that work flawlessly and look great doing it.
             <br />
             <br />
-            Let&apos;s collaborate to turn your vision into a reliable, high‑impact
-            digital experience that your users (and clients) will love.
-          </p>
+            Let&apos;s collaborate to turn your vision into a reliable, high‑impact digital experience that your users (and clients) will love.
+          </motion.p>
 
           {/* Badges */}
-          <div
+          <motion.div
+            variants={itemVariants}
             className="mt-6 grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-items-center md:justify-start gap-3"
-            data-aos="fade-right"
           >
             <Badge label="Full Stack Dev (MERN / Next JS)" icon={<Code size={16} />} />
             <Badge label="3+ Years Experience" icon={<Clock size={16} />} />
             <Badge label="BS Computer Science" icon={<GraduationCap size={16} />} />
             <Badge label="Freelancer" icon={<Briefcase size={16} />} />
-          </div>
-
-
+          </motion.div>
 
           {/* Social icons */}
-          <div className="mt-6 flex justify-center gap-3 sm:gap-5 md:justify-start" data-aos="fade-right">
+          <motion.div
+            variants={itemVariants}
+            className="mt-6 flex justify-center gap-3 sm:gap-5 md:justify-start"
+          >
             <IconLink href="https://github.com/ali-hassan-dev" label="GitHub" icon={<Github size={20} />} />
             <IconLink href="https://linkedin.com/in/alihassan-dev" label="LinkedIn" icon={<Linkedin size={20} />} />
             <IconLink href="https://instagram.com/yourhandle" label="Instagram" icon={<Instagram size={20} />} />
             <IconLink href="https://facebook.com/yourhandle" label="Facebook" icon={<Facebook size={20} />} />
-          </div>
+          </motion.div>
 
-          {/* CTA buttons */}
-          <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
-            {[
-              { href: "#contact", label: "Contact Me", variant: "outline" }
-            ].map((btn) => (
-              <Link key={btn.label} href={btn.href}>
-                <Button
-                  borderRadius="1.75rem"
-                  className={cn(
-                    "w-full sm:w-auto", // <- full width on mobile
-                    btn.variant === "primary" &&
-                    "bg-gradient-to-r from-teal-400 to-cyan-500 text-black hover:from-teal-300 hover:to-cyan-400 dark:text-white",
-                    btn.variant === "outline" &&
-                    "bg-transparent hover:cursor-pointer text-white hover:bg-white/10 border border-white/30 flex items-center gap-2",
-                    btn.variant === "ghost" &&
-                    "bg-white text-black hover:bg-neutral-100 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800 border border-neutral-200 dark:border-slate-800"
-                  )}
-                >
-                  {btn.label}
-                </Button>
-              </Link>
-            ))}
-          </div>
-        </div>
+          {/* CTA Buttons */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start"
+          >
+            <Link href="#contact">
+              <Button
+                borderRadius="1.75rem"
+                className={cn(
+                  "w-full sm:w-auto",
+                  "bg-transparent hover:cursor-pointer text-white hover:bg-white/10 border border-white/30 flex items-center gap-2"
+                )}
+              >
+                Contact Me
+              </Button>
+            </Link>
+          </motion.div>
+        </motion.div>
+
+
 
         {/* ─── Right column ─── */}
         <div className="flex w-auto justify-center md:w-5/12" data-aos="zoom-in">

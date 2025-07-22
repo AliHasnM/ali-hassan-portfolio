@@ -1,44 +1,61 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiUpwork, SiFiverr } from "react-icons/si";
 import { Briefcase, Globe2, Star } from "lucide-react";
 import { freelanceWork, fullTimeExperiences } from "../data/experienceData";
-
+import { initSmoothScroll } from "../lib/lenis";
 
 export default function ExperiencePage() {
+    useEffect(() => {
+        initSmoothScroll();
+    }, []);
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-[#191822] via-[#0b1618] to-[#090802] text-white">
             <section className="py-20 px-5 max-w-7xl mx-auto" id="experience">
                 {/* Section Title */}
                 <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    viewport={{ once: false }}
                     className="text-center text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent mb-16"
                 >
                     Experience & Remote Work
                 </motion.h2>
 
                 {/* Professional Experience */}
-                <div className="mb-16 px-2">
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: false }}
+                    className="mb-16 px-2"
+                >
                     <h3 className="text-2xl font-semibold text-cyan-600 mb-6 flex items-center gap-2">
                         <Briefcase className="w-5 h-5" />
                         Professional Roles
                     </h3>
                     <div className="grid md:grid-cols-2 gap-8">
                         {fullTimeExperiences.map((exp, i) => {
-                            const Icon = exp.icon; // ✅ extract the icon component
+                            const Icon = exp.icon;
                             return (
                                 <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 40 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.2 }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 80,
+                                        damping: 14,
+                                        delay: i * 0.15,
+                                    }}
+                                    viewport={{ once: false }}
                                     className="cursor-pointer bg-white dark:bg-gray-900/80 border border-cyan-500/20 shadow-md p-6 rounded-2xl transition duration-300 hover:-translate-y-1 hover:shadow-lg 
-          hover:border-transparent hover:bg-gradient-to-br hover:from-cyan-400/20 hover:to-blue-500/10 hover:ring-1 hover:ring-cyan-400/40"
+                  hover:border-transparent hover:bg-gradient-to-br hover:from-cyan-400/20 hover:to-blue-500/10 hover:ring-1 hover:ring-cyan-400/40"
                                 >
                                     <div className="flex items-center gap-3 mb-3">
                                         <Icon className="text-xl text-gray-700 dark:text-gray-300" />
@@ -62,26 +79,37 @@ export default function ExperiencePage() {
                             );
                         })}
                     </div>
+                </motion.div>
 
-                </div>
-
-                {/* Freelance Section */}
-                <div className="px-2">
+                {/* Freelance Experience */}
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: false }}
+                    className="px-2"
+                >
                     <h3 className="text-2xl font-semibold text-cyan-600 mb-6 flex items-center gap-2">
                         <Globe2 className="w-5 h-5" />
                         Freelance & Remote Work
                     </h3>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {freelanceWork.map((f, i) => {
-                            const Icon = f.icon; // ✅ extract the icon component
+                            const Icon = f.icon;
                             return (
                                 <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 40 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.2 }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 90,
+                                        damping: 16,
+                                        delay: i * 0.12,
+                                    }}
+                                    viewport={{ once: false }}
                                     className="cursor-pointer bg-white dark:bg-gray-900/80 border border-cyan-500/20 shadow-md p-6 rounded-2xl transition duration-300 hover:-translate-y-1 hover:shadow-lg 
-             hover:border-transparent hover:bg-gradient-to-br hover:from-cyan-400/20 hover:to-blue-500/10 hover:ring-1 hover:ring-cyan-400/40"
+                  hover:border-transparent hover:bg-gradient-to-br hover:from-cyan-400/20 hover:to-blue-500/10 hover:ring-1 hover:ring-cyan-400/40"
                                 >
                                     <div className="flex items-center gap-3 mb-3">
                                         <Icon className="w-6 h-6 text-cyan-500" />
@@ -106,47 +134,37 @@ export default function ExperiencePage() {
                                         ))}
                                     </ul>
                                 </motion.div>
-                            )
+                            );
                         })}
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Social Links */}
-                <div className="text-center mt-20">
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    viewport={{ once: false }}
+                    className="text-center mt-20"
+                >
                     <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-400 mb-2">
                         Connect with me
                     </h4>
                     <div className="flex justify-center gap-6 text-4xl text-gray-700 dark:text-gray-300">
-                        <a
-                            href="https://www.linkedin.com/in/your-profile"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
                             <FaLinkedin className="hover:text-blue-600" />
                         </a>
-                        <a
-                            href="https://github.com/yourusername"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
                             <FaGithub className="hover:text-black dark:hover:text-white" />
                         </a>
-                        <a
-                            href="https://www.upwork.com/freelancers/your-id"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <a href="https://www.upwork.com/freelancers/your-id" target="_blank" rel="noopener noreferrer">
                             <SiUpwork className="hover:text-green-600" />
                         </a>
-                        <a
-                            href="https://www.fiverr.com/yourusername"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <a href="https://www.fiverr.com/yourusername" target="_blank" rel="noopener noreferrer">
                             <SiFiverr className="hover:text-green-500" />
                         </a>
                     </div>
-                </div>
+                </motion.div>
             </section>
         </div>
     );

@@ -8,7 +8,9 @@ import {
     FaEnvelope,
     FaFacebook,
 } from "react-icons/fa";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { motion } from "framer-motion";
+import { initSmoothScroll } from "../lib/lenis";
 
 interface FormData {
     name: string;
@@ -24,6 +26,10 @@ export default function ContactPage() {
     });
     const [successMessage, setSuccessMessage] = useState("");
 
+    useEffect(() => {
+        initSmoothScroll();
+    }, []);
+
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -32,24 +38,37 @@ export default function ContactPage() {
         e.preventDefault();
         setSuccessMessage("✅ Your message has been sent successfully!");
         setFormData({ name: "", email: "", message: "" });
-
-        // Optional: hide the message after 5 seconds
         setTimeout(() => setSuccessMessage(""), 5000);
     };
 
     return (
         <section className="min-h-screen bg-gradient-to-br from-[#0c0c0c] via-[#111111] to-[#0a0a0a] text-white px-6 py-20" id="contact">
             <div className="max-w-4xl mx-auto text-center px-2">
-                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-500 bg-clip-text text-transparent">
+                <motion.h2
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-4xl md:text-5xl font-bold mb-4 text-gradient bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-500 bg-clip-text text-transparent"
+                >
                     Let’s Get in Touch
-                </h2>
-                <p className="text-gray-400 mb-12">
-                    Have a vision, collaboration idea, or just want to say hi? I’d love to hear from you!
-                </p>
+                </motion.h2>
 
-                <form
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3, duration: 0.6 }}
+                    className="text-gray-400 mb-12"
+                >
+                    Have a vision, collaboration idea, or just want to say hi? I’d love to hear from you!
+                </motion.p>
+
+                <motion.form
                     onSubmit={handleSubmit}
-                    className="grid grid-cols-1 gap-6 max-w-2xl mx-auto bg-[#1a1a1a] p-8 rounded-xl border border-gray-700 shadow-md"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.4 }}
+                    viewport={{ once: false }}
+                    className="grid grid-cols-1 gap-6 max-w-2xl mx-auto bg-[#1a1a1a] p-8 rounded-xl border border-gray-700 shadow-md backdrop-blur-sm bg-opacity-80"
                 >
                     <input
                         type="text"
@@ -80,21 +99,30 @@ export default function ContactPage() {
                     ></textarea>
                     <button
                         type="submit"
-                        className="bg-gradient-to-r from-teal-400 via-cyan-500 to-blue-500 text-white py-3 px-6 rounded-md font-semibold hover:opacity-90 transition"
+                        className="cursor-pointer bg-gradient-to-r from-teal-400 via-cyan-500 to-blue-500 text-white py-3 px-6 rounded-md font-semibold hover:opacity-90 transition"
                     >
                         Send Message
                     </button>
-                </form>
+                </motion.form>
 
-                {/* ✅ Success Message */}
                 {successMessage && (
-                    <div className="mt-6 text-green-400 text-sm font-medium transition-opacity duration-500">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.4 }}
+                        className="mt-6 text-green-400 text-sm font-medium"
+                    >
                         {successMessage}
-                    </div>
+                    </motion.div>
                 )}
 
-                {/* Social Icons */}
-                <div className="mt-12 flex flex-wrap justify-center gap-6 text-gray-300">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8 }}
+                    viewport={{ once: false }}
+                    className="mt-12 flex flex-wrap justify-center gap-6 text-gray-300"
+                >
                     {[
                         { href: "https://github.com/yourgithub", icon: <FaGithub /> },
                         { href: "https://linkedin.com/in/yourlinkedin", icon: <FaLinkedin /> },
@@ -111,10 +139,14 @@ export default function ContactPage() {
                             {icon}
                         </a>
                     ))}
-                </div>
+                </motion.div>
 
-                {/* Email and Phone */}
-                <div className="flex flex-col md:flex-row gap-4 text-sm text-gray-400 mt-8 items-center justify-center">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex flex-col md:flex-row gap-4 text-sm text-gray-400 mt-8 items-center justify-center"
+                >
                     <div
                         className="flex items-center gap-2 hover:text-teal-400 cursor-pointer transition"
                         onClick={() => window.location.href = "mailto:mughal201burewala@gmail.com"}
@@ -129,7 +161,7 @@ export default function ContactPage() {
                         <FaPhone />
                         <span className="hover:underline">+92 307 8357370</span>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
