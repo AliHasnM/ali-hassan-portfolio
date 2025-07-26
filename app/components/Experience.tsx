@@ -151,16 +151,16 @@ export default function ExperiencePage() {
                         Connect with me
                     </h4>
                     <div className="flex justify-center gap-6 text-4xl text-gray-700 dark:text-gray-300">
-                        <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.linkedin.com/in/ali-hassan-261187253" target="_blank" rel="noopener noreferrer">
                             <FaLinkedin className="hover:text-blue-600" />
                         </a>
-                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/AliHasnM" target="_blank" rel="noopener noreferrer">
                             <FaGithub className="hover:text-black dark:hover:text-white" />
                         </a>
-                        <a href="https://www.upwork.com/freelancers/your-id" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.upwork.com/freelancers/~0189ab3ece08ee95d9" target="_blank" rel="noopener noreferrer">
                             <SiUpwork className="hover:text-green-600" />
                         </a>
-                        <a href="https://www.fiverr.com/yourusername" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.fiverr.com/web_dev_hassan" target="_blank" rel="noopener noreferrer">
                             <SiFiverr className="hover:text-green-500" />
                         </a>
                     </div>

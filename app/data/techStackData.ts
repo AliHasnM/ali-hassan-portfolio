@@ -186,7 +186,6 @@ export const techStack: TechCategory[] = [
     items: [
       { name: "REST API", icon: RiToolsFill, className: "text-blue-600" },
       { name: "WebSocket", icon: SiSocketdotio, className: "text-purple-600" },
-      { name: "Postman", icon: SiPostman, className: "text-orange-500" },
       { name: "Git", icon: FaGitAlt, className: "text-red-600" },
       { name: "VS Code", icon: VscVscode, className: "text-blue-500" },
       { name: "Figma", icon: SiFigma, className: "text-pink-500" },

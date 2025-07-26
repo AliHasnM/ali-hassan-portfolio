@@ -7,6 +7,7 @@ import "aos/dist/aos.css";
 import { motion } from "framer-motion";
 import { initSmoothScroll } from "../lib/lenis";
 import { steps } from "../data/aboutData";
+import { CardContainer, CardBody, CardItem } from "./ui/3d-card";
 
 const AboutPage = () => {
     useEffect(() => {
@@ -24,15 +25,30 @@ const AboutPage = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: false }}
-                    className="relative w-[24rem] h-[24rem] rounded-2xl border-4 border-cyan-400 shadow-xl overflow-hidden"
                 >
-                    <Image
-                        src="/images/ali-hassan-about.jpg"
-                        alt="Ali Hassan"
-                        fill
-                        className="rounded-xl object-cover"
-                    />
+                    <CardContainer containerClassName="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+                        <CardBody className="relative w-full aspect-square">
+                            <CardItem
+                                translateZ={50}
+                                className="relative cursor-pointer w-full h-full rounded-2xl border-4 border-cyan-400 shadow-xl overflow-hidden"
+                            >
+                                <div className="absolute inset-0">
+                                    <Image
+                                        src="/images/ali-hassan-about.jpg"
+                                        alt="Ali Hassan"
+                                        fill
+                                        className="rounded-2xl object-cover object-top z-10"
+                                        priority
+                                    />
+                                </div>
+                            </CardItem>
+                        </CardBody>
+                    </CardContainer>
                 </motion.div>
+
+
+
+
 
                 <motion.div
                     initial={{ opacity: 0, x: 60 }}

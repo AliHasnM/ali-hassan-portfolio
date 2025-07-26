@@ -7,9 +7,7 @@ import Link from "next/link";
 import { cn } from "../lib/utils";
 import { easeInOut, motion, Variants } from "framer-motion";
 import useScrollDirection from "../hooks/useScrollDirection";
-
-// import AOS from "aos";
-// import "aos/dist/aos.css";
+import { CardContainer, CardBody, CardItem } from "./ui/3d-card";
 import {
   Code,
   Clock,
@@ -196,19 +194,31 @@ const HeroSection = () => {
 
 
         {/* ─── Right column ─── */}
-        <div className="flex w-auto justify-center md:w-5/12" data-aos="zoom-in">
-          <div className="relative h-60 w-60 xs:h-64 xs:w-64 sm:h-72 sm:w-72 md:h-80 md:w-80 mt-20 sm:mt-1">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr
-                    from-teal-400/30 to-cyan-500/10 blur-2xl" />
-            <Image
-              src="/images/ali-hassan-profile.png"
-              alt="Ali Hassan"
-              fill
-              className="rounded-full border-4 border-cyan-400 object-cover shadow-lg"
-              priority
-            />
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          viewport={{ once: false }}
+        >
+          <CardContainer containerClassName="md:w-5/12 flex justify-center">
+            <CardBody className="relative mt-20 sm:mt-1 h-72 w-72 xs:h-64 xs:w-64 sm:h-72 sm:w-72 md:h-80 md:w-80">
+              <CardItem
+                translateZ={80}
+                className="relative cursor-pointer mx-0 sm:mx-14 h-full w-full rounded-full border-4 border-cyan-400 shadow-lg overflow-hidden"
+              >
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-teal-400/30 to-cyan-500/10 blur-2xl z-0" />
+                <Image
+                  src="/images/ali-hassan-profile.png"
+                  alt="Ali Hassan"
+                  fill
+                  className="rounded-full object-cover z-10"
+                  priority
+                />
+              </CardItem>
+            </CardBody>
+          </CardContainer>
+        </motion.div>
+
       </div>
     </section>
   );
