@@ -62,7 +62,7 @@ const AboutPage = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: false }}
-                        className="text-3xl text-center sm:text-5xl font-extrabold bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent"
+                        className="text-3xl mt-8 text-center sm:text-5xl font-extrabold bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent"
                     >
                         About Me
                     </motion.h2>

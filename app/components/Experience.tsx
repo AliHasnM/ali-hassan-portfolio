@@ -22,7 +22,7 @@ export default function ExperiencePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
                     viewport={{ once: false }}
-                    className="text-center text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent mb-16"
+                    className="text-center mt-8 text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent mb-16"
                 >
                     Experience & Remote Work
                 </motion.h2>

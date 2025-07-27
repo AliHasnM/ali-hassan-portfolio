@@ -1,23 +1,23 @@
 export const testimonials = [
   {
-    name: "Emily Carter",
-    role: "CEO, Innovixion Tech",
+    name: "Swati Sri",
+    role: "CEO & Founder, CodeAlpha (Lucknow, India)",
     review:
-      "Ali Hassan is a rare talent. He transformed our platform’s frontend within days. Highly recommended!",
-    image: "/images/ali-hassan-profile.png",
+      "Ali Hassan showed strong MERN skills and professionalism throughout the internship. A dependable developer with a great future!",
+    image: "/images/codealpha-logo.jpeg",
   },
   {
-    name: "Michael Rodriguez",
-    role: "Team Lead, CodeAlpha",
+    name: "Hammad Irfan",
+    role: "Founder & CEO, Devsinz Intern Connect (Karachi, Pakistan)",
     review:
-      "Exceptional work ethic and brilliant MERN skills. Ali over-delivers every time.",
-    image: "/images/ali-hassan-profile.png",
+      "Ali Hassan’s ability to understand complex backend logic and deliver clean MERN stack solutions impressed us deeply. Highly recommended!",
+    image: "/images/devsinz-intern-connect-logo.webp",
   },
   {
-    name: "Sophia Kim",
-    role: "CTO, Devsinz Intern Connect",
+    name: "Pranav Dubey",
+    role: "Managing Director, The Sparks Foundation",
     review:
-      "We rely on Ali for his sharp problem-solving and clean code. He’s like an engine in our team.",
-    image: "/images/ali-hassan-profile.png",
+      "Ali Hassan was a consistent and innovative contributor to our web development and design tasks. Great potential and work ethic.",
+    image: "/images/the-sparks-foundation-logo.jpg",
   },
 ];

@@ -18,7 +18,7 @@ export default function BlogPage() {
                 transition={{ duration: 0.8 }}
                 className="max-w-5xl mx-auto text-center"
             >
-                <h2 className="text-4xl md:text-5xl font-bold mb-12 text-gradient bg-gradient-to-r from-teal-400 via-cyan-500 to-blue-500 bg-clip-text text-transparent">
+                <h2 className="text-4xl mt-8 md:text-5xl font-bold mb-12 text-gradient bg-gradient-to-r from-teal-400 via-cyan-500 to-blue-500 bg-clip-text text-transparent">
                     Blog & Articles
                 </h2>
 

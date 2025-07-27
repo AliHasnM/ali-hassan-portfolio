@@ -48,9 +48,9 @@ export default function ContactPage() {
                     initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-4xl md:text-5xl font-bold mb-4 text-gradient bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-500 bg-clip-text text-transparent"
+                    className="text-4xl mt-8 md:text-5xl font-bold mb-4 text-gradient bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-500 bg-clip-text text-transparent"
                 >
-                    Let’s Get in Touch
+                    Let&apos;s Get in Touch
                 </motion.h2>
 
                 <motion.p
@@ -124,10 +124,10 @@ export default function ContactPage() {
                     className="mt-12 flex flex-wrap justify-center gap-6 text-gray-300"
                 >
                     {[
-                        { href: "https://github.com/yourgithub", icon: <FaGithub /> },
-                        { href: "https://linkedin.com/in/yourlinkedin", icon: <FaLinkedin /> },
-                        { href: "https://instagram.com/yourinstagram", icon: <FaInstagram /> },
-                        { href: "https://facebook.com/yourfacebook", icon: <FaFacebook /> },
+                        { href: "https://github.com/AliHasnM", icon: <FaGithub /> },
+                        { href: "https://linkedin.com/in/ali-hassan-261187253", icon: <FaLinkedin /> },
+                        { href: "https://www.instagram.com/alihassan.mughal.7524", icon: <FaInstagram /> },
+                        { href: "https://www.facebook.com/alihassan.mughal.7524", icon: <FaFacebook /> },
                     ].map(({ href, icon }, i) => (
                         <a
                             key={i}

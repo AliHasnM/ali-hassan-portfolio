@@ -9,7 +9,11 @@ import { CardContainer, CardBody } from "./ui/3d-card";
 import { featuredProjects, categories } from "../data/projectData";
 import { initSmoothScroll } from "../lib/lenis";
 
-export default function FeaturedProjects() {
+type Props = {
+    showViewAll?: boolean;
+};
+
+export default function FeaturedProjects({ showViewAll = true }: Props) {
     const [activeCategory, setActiveCategory] = useState("All");
 
     useEffect(() => {
@@ -21,17 +25,17 @@ export default function FeaturedProjects() {
             ? featuredProjects
             : featuredProjects.filter((proj) => proj.category === activeCategory);
 
+    // 🔥 Slice only if showViewAll is true (landing page)
+    const visibleProjects = showViewAll ? filteredProjects.slice(0, 6) : filteredProjects;
+
     return (
-        <section
-            className="py-20 px-5 max-w-7xl mx-auto"
-            id="projects"
-        >
+        <section className="py-20 px-5 max-w-7xl mx-auto" id="projects">
             <motion.h2
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: false }}
-                className="text-center text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent mb-12"
+                className="text-center mt-8 text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent mb-12"
             >
                 Featured Projects
             </motion.h2>
@@ -49,8 +53,8 @@ export default function FeaturedProjects() {
                         key={cat}
                         onClick={() => setActiveCategory(cat)}
                         className={`px-5 cursor-pointer py-2 rounded-full text-sm font-semibold border transition-all duration-300 shadow-sm ${activeCategory === cat
-                            ? "bg-blue-600 text-white border-blue-600"
-                            : "bg-white dark:bg-zinc-800 text-gray-700 dark:text-gray-200 border-gray-300 hover:border-blue-500 hover:text-blue-600"
+                                ? "bg-blue-600 text-white border-blue-600"
+                                : "bg-white dark:bg-zinc-800 text-gray-700 dark:text-gray-200 border-gray-300 hover:border-blue-500 hover:text-blue-600"
                             }`}
                     >
                         {cat}
@@ -60,13 +64,18 @@ export default function FeaturedProjects() {
 
             {/* Project Cards */}
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-                {filteredProjects.slice(0, 6).map((project, i) => (
+                {visibleProjects.map((project, i) => (
                     <CardContainer key={project.id}>
                         <CardBody>
                             <motion.div
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1, duration: 0.6, type: "spring", damping: 14 }}
+                                transition={{
+                                    delay: i * 0.1,
+                                    duration: 0.6,
+                                    type: "spring",
+                                    damping: 14,
+                                }}
                                 viewport={{ once: false }}
                                 className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-cyan-500/20 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105 cursor-pointer flex flex-col h-[30rem]"
                             >
@@ -84,7 +93,6 @@ export default function FeaturedProjects() {
                                         <h3 className="text-xl font-semibold text-blue-700 dark:text-cyan-400 whitespace-nowrap overflow-hidden text-ellipsis">
                                             {project.title}
                                         </h3>
-
                                         <span className="text-xs bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-full">
                                             {project.category}
                                         </span>
@@ -129,21 +137,23 @@ export default function FeaturedProjects() {
                 ))}
             </div>
 
-            {/* View All Projects */}
-            <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: false }}
-                className="text-center mt-12"
-            >
-                <Link
-                    href="/projects"
-                    className="inline-block px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-full shadow-md transition"
+            {/* View All Projects Button (conditionally shown) */}
+            {showViewAll && (
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: false }}
+                    className="text-center mt-12"
                 >
-                    View All Projects
-                </Link>
-            </motion.div>
+                    <Link
+                        href="/projects"
+                        className="inline-block px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-full shadow-md transition"
+                    >
+                        View All Projects
+                    </Link>
+                </motion.div>
+            )}
         </section>
     );
 }

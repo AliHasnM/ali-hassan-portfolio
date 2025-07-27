@@ -22,7 +22,7 @@ export default function TechStack() {
                 viewport={{ once: false }}
                 className="max-w-6xl mx-auto"
             >
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-center text-gray-800 dark:text-white mb-12">
+                <h2 className="text-3xl mt-8 sm:text-4xl font-extrabold text-center text-gray-800 dark:text-white mb-12">
                     Tech Stack & Skills
                 </h2>
 

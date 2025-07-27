@@ -1,4 +1,3 @@
-/* app/components/HeroSection.tsx */
 "use client";
 
 import React from "react";
@@ -17,6 +16,7 @@ import {
   Linkedin,
   Instagram,
   Facebook,
+  Contact2Icon
 } from "lucide-react";
 
 import { Spotlight } from "./ui/spotlight-new";
@@ -65,15 +65,7 @@ const IconLink = ({
   </Link>
 );
 
-const HeroSection = () => {
-  // useEffect(() => {
-  //   AOS.init({
-  //     duration: 1000,
-  //     once: false,
-  //     offset: 120, // default is 120px before it triggers
-  //     easing: 'ease-in-out',
-  //   });
-  // }, []);
+const AliHassan = () => {
   const scrollDirection = useScrollDirection();
 
   const containerVariants: Variants = {
@@ -166,10 +158,10 @@ const HeroSection = () => {
             variants={itemVariants}
             className="mt-6 flex justify-center gap-3 sm:gap-5 md:justify-start"
           >
-            <IconLink href="https://github.com/ali-hassan-dev" label="GitHub" icon={<Github size={20} />} />
-            <IconLink href="https://linkedin.com/in/alihassan-dev" label="LinkedIn" icon={<Linkedin size={20} />} />
-            <IconLink href="https://instagram.com/yourhandle" label="Instagram" icon={<Instagram size={20} />} />
-            <IconLink href="https://facebook.com/yourhandle" label="Facebook" icon={<Facebook size={20} />} />
+            <IconLink href="https://github.com/AliHasnM" label="GitHub" icon={<Github size={20} />} />
+            <IconLink href="https://www.linkedin.com/in/ali-hassan-261187253" label="LinkedIn" icon={<Linkedin size={20} />} />
+            <IconLink href="https://www.instagram.com/alihassan.mughal.7524" label="Instagram" icon={<Instagram size={20} />} />
+            <IconLink href="https://www.facebook.com/alihassan.mughal.7524" label="Facebook" icon={<Facebook size={20} />} />
           </motion.div>
 
           {/* CTA Buttons */}
@@ -177,18 +169,27 @@ const HeroSection = () => {
             variants={itemVariants}
             className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start"
           >
-            <Link href="#contact">
+            <Link href="/contact">
               <Button
                 borderRadius="1.75rem"
                 className={cn(
-                  "w-full sm:w-auto",
-                  "bg-transparent hover:cursor-pointer text-white hover:bg-white/10 border border-white/30 flex items-center gap-2"
+                  "w-full sm:w-auto cursor-pointer px-6 py-3 flex items-center gap-2",
+                  "bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold tracking-wide",
+                  "hover:from-blue-600 hover:to-cyan-600 transition duration-300 ease-in-out",
+                  "shadow-lg hover:shadow-xl",
+                  "border border-transparent hover:border-white/30",
+                  "backdrop-blur-md backdrop-saturate-150",
+                  "ring-1 ring-white/10 hover:ring-white/20",
+                  "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
                 )}
               >
                 Contact Me
+                <Contact2Icon className="w-4 h-4" />
               </Button>
             </Link>
           </motion.div>
+
+
         </motion.div>
 
 
@@ -224,4 +225,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default AliHassan;

@@ -15,7 +15,7 @@ export default function TestimonialsPage() {
         <section className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-950 py-20 px-4 text-white">
             <div className="max-w-6xl mx-auto text-center">
                 <motion.h2
-                    className="text-4xl md:text-5xl font-extrabold mb-16 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500"
+                    className="text-4xl mt-8 md:text-5xl font-extrabold mb-16 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500"
                     initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}

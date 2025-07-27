@@ -19,7 +19,7 @@ export default function EducationPage() {
         <div className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-950 min-h-screen">
             <div className="max-w-6xl mx-auto px-4 py-12">
                 <motion.h2
-                    className="text-3xl font-bold mb-10 text-center"
+                    className="text-3xl font-bold mb-10 text-center mt-16"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}

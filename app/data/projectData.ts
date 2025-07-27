@@ -110,6 +110,7 @@ export const featuredProjects = [
     description:
       "A weather forecast dashboard with live data integration and clean UI components.",
     github: "https://github.com/AliHasnM/CodeAlpha_Task2_Weather_Dashboard",
+    live: "https://sparkling-taffy-285a3f.netlify.app",
     image: "/images/weather.png",
   },
   {
@@ -142,20 +143,10 @@ export const featuredProjects = [
     description:
       "Frontend travel booking interface with a sleek and interactive layout.",
     github: "https://github.com/AliHasnM/Frontend-Travel-and-Travel",
-    image: "/images/travel-tour-frontend.png",
+    image: "/images/travel-tour.png",
   },
   {
     id: 14,
-    title: "PDF to Voice & Word App",
-    category: "Frontend",
-    tech: ["HTML", "CSS", "TailwindCSS"],
-    description:
-      "Convert PDF files to speech or editable Word documents with a smooth, user-friendly interface.",
-    github: "https://github.com/AliHasnM/MITPDF",
-    image: "/images/project-img.png",
-  },
-  {
-    id: 15,
     title: "Job Portal",
     category: "Backend",
     tech: ["Node.js", "Express.js", "MongoDB", "Mongoose", "Cloudinary"],
@@ -166,7 +157,7 @@ export const featuredProjects = [
     image: "/images/job-portal.png",
   },
   {
-    id: 16,
+    id: 15,
     title: "University Timetable System",
     category: "Backend",
     tech: ["Node.js", "Express.js", "MongoDB", "Mongoose", "Cloudinary"],
@@ -176,7 +167,7 @@ export const featuredProjects = [
     image: "/images/uni-timetable-backend.png",
   },
   {
-    id: 17,
+    id: 16,
     title: "Image to Code",
     category: "AI",
     tech: [
@@ -193,7 +184,7 @@ export const featuredProjects = [
     image: "/images/image-to-code.png",
   },
   {
-    id: 18,
+    id: 17,
     title: "Travel & Tour Booking System",
     category: "Backend",
     tech: ["Node.js", "Express.js", "MongoDB", "Mongoose", "Cloudinary"],
@@ -203,7 +194,7 @@ export const featuredProjects = [
     image: "/images/travel-tour-backend.png",
   },
   {
-    id: 19,
+    id: 18,
     title: "YouTube Clone",
     category: "Backend",
     tech: ["Node.js", "Express.js", "MongoDB", "Mongoose", "Cloudinary"],
@@ -213,8 +204,8 @@ export const featuredProjects = [
     image: "/images/youtube.png",
   },
   {
-    id: 20,
-    title: "Contact Management System",
+    id: 19,
+    title: "CMS",
     category: "Full Stack",
     tech: [
       "React",
