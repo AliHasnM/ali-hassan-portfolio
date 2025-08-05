@@ -77,7 +77,7 @@ export const freelanceWork: FreelanceWork[] = [
   {
     platform: "Fiverr",
     role: "Full Stack Developer (Freelance)",
-    duration: "2023 – Present",
+    duration: "2025 – Present",
     clients: "Tech Startups, Entrepreneurs & Growing Businesses",
     projects: 0,
     highlights: [
@@ -91,7 +91,7 @@ export const freelanceWork: FreelanceWork[] = [
   {
     platform: "Upwork",
     role: "MERN / Next.js Developer (Freelance)",
-    duration: "2024 – Present",
+    duration: "2025 – Present",
     clients: "Agencies, Tech Teams & Product-Based Startups",
     projects: 0,
     highlights: [
